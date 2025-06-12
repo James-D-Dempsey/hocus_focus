@@ -55,7 +55,7 @@ chrome.tabs.onActivated.addListener(activeInfo => {
   chrome.storage.local.set({ tabSwitchCount });
 });
 
-let timerState = 'Work'; // "Work" period or "Break"
+let timerState = 'Focus'; // "Work" period or "Break"
 const workDuration = 25 * 60;   // 25 minutes expressed in seconds
 const breakDuration = 5 * 60;   // 5 minutes expressed in seconds
 let remainingTime = workDuration;
@@ -77,7 +77,7 @@ function startTimer() {
     remainingTime--;
     if (remainingTime <= 0) {
       // Switch timer state and reset remaining seconds
-      if (timerState === 'Work') {
+      if (timerState === 'focus') {
         chrome.notifications.create({
           type: 'basic',
           iconUrl: 'icon.png', // Ensure you have icon.png in your extension folder
@@ -85,10 +85,10 @@ function startTimer() {
           message: 'Time to take a 5 minute break!'
         });
 
-        timerState = 'Break';
+        timerState = 'relax';
         remainingTime = breakDuration;
       } else {
-        timerState = 'Work';
+        timerState = 'focus';
         remainingTime = workDuration;
       }
     }

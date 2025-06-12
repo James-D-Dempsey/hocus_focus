@@ -9,34 +9,34 @@
       padding: 10px;
       margin: 0;
       width: 150px;
+      background-color: #A8C5DA; /* Background color */
+      color: #E0E4EC; /* Text color */
+      text-align: center;
     }
-    h1 {
-      font-size: 1.2em;
-      margin: 0;
+
+    #timer {
+      font-size: 2em; /* Highlight the timer */
+      font-weight: bold;
+      margin: 20px 0;
     }
     #reset {
-      margin-top: 8px;
-      padding: 4px 8px;
-      font-size: 0.9em;
-      cursor: pointer;
-    }
-
-    #pageType #timer #idleTime {
-      margin: 8px 0;
+      margin-top: 12px;
+      padding: 6px 12px;
       font-size: 1em;
+      cursor: pointer;
+      background-color: #E0E4EC; /* Button background */
+      color: #A8C5DA; /* Button text */
+      border: none;
+      border-radius: 4px;
     }
-
-    
+    #reset:hover {
+      background-color: #D0D8E0; /* Button hover effect */
+    }
   </style>
 </head>
 <body>
-  <h1>
-    Click Count: <span id="count">0</span>
-    <div>Tab Switches: <span id="tabSwitchCount">0</span></div>
-  </h1>
-    <div id="pageType">Page Type: Unknown</div>
-    <div id="timer">Timer: Unknown</div>
-    <div id="idleTime">Idle Time: 00:00:00</div>
+
+  <div id="timer">00:00:00</div>
   <button id="reset">Reset</button>
 
   <script src="popup.js"></script>

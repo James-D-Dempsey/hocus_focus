@@ -43,7 +43,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
       if (changes.timer) {
         console.log("Timer changed:", changes.timer.newValue); // Debug log
         const { state, remaining } = changes.timer.newValue;
-        timerEl.textContent = `Timer: ${state} - ${formatTime(remaining)}`;
+        timerEl.textContent = `${state} - ${formatTime(remaining)}`;
       }
       if (changes.idleTime) {
           console.log("Idle time changed:", changes.idleTime.newValue); // Debug log
