@@ -3,7 +3,9 @@
 "name": "Click Counter",
 "version": "1.0",
 "description": "Counts clicks on all web pages and updates toolbar badge and popup.",
-"permissions": ["storage", "tabs", "activeTab"],
+"permissions": ["storage", "tabs", "activeTab", 
+                "notifications", "webRequest", 
+                "webRequestBlocking"],
 "host_permissions": ["<all_urls>"],
 "action": {
 "default_popup": "popup.html"

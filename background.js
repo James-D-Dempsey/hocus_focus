@@ -63,8 +63,8 @@ chrome.tabs.onActivated.addListener(activeInfo => {
 });
 
 let timerState = 'Work'; // "Work" period or "Break"
-const workDuration = 25 * 60;   // 25 minutes expressed in seconds
-const breakDuration = 5 * 60;   // 5 minutes expressed in seconds
+const workDuration = 5 * 60;   // 25 minutes expressed in seconds
+const breakDuration = 1 * 60;   // 5 minutes expressed in seconds
 let remainingTime = workDuration;
 let timerIntervalId = null;
 
@@ -86,6 +86,13 @@ function startTimer() {
         if (remainingTime <= 0) {
             // Switch timer state and reset remaining seconds
             if (timerState === 'Work') {
+                chrome.notifications.create({
+                      type: 'basic',
+                      iconUrl: 'icon.png', // Ensure you have icon.png in your extension folder
+                      title: 'Work Session Complete!',
+                      message: 'Time to take a 5 minute break!'
+                });
+
                 timerState = 'Break';
                 remainingTime = breakDuration;
             } else {
@@ -98,3 +105,21 @@ function startTimer() {
 }
 
 startTimer();
+
+
+// List of blocked URLs (this can be modified or extended)
+const blockedUrls = [
+  "*://www.facebook.com/*",
+  "*://www.twitter.com/*",
+  "*://www.instagram.com/*"
+];
+
+// Listener to block requests matching a blocked URL pattern
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    console.log("Blocking:", details.url);
+    return { cancel: true };
+  },
+  { urls: blockedUrls },
+  ["blocking"]
+);
