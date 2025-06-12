@@ -21,10 +21,11 @@
       cursor: pointer;
     }
 
-    #pageType #timer{
+    #pageType #timer #idleTime {
       margin: 8px 0;
       font-size: 1em;
     }
+
     
   </style>
 </head>
@@ -34,8 +35,10 @@
     <div>Tab Switches: <span id="tabSwitchCount">0</span></div>
   </h1>
     <div id="pageType">Page Type: Unknown</div>
-    <div id="timer">Timer: </div>
+    <div id="timer">Timer: Unknown</div>
+    <div id="idleTime">Idle Time: 00:00:00</div>
   <button id="reset">Reset</button>
+
   <script src="popup.js"></script>
 </body>
 </html>

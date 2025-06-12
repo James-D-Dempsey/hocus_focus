@@ -2,19 +2,11 @@
 
 console.log('[ClickCounter] injected into frame:', location.href);
 
-// 1) Skip non-HTTP(S) frames (e.g. extension or about:blank)
-// if (!/^https?:/.test(window.location.protocol)) {
-//   console.log('[ClickCounter] skipping frame:', location.href);
-//   return;
-// }
-
-// 2) Install your click listener everywhere else
 document.addEventListener(
   'click',
   () => {
     console.log('[ClickCounter] click in frame:', location.href);
 
-    // 3) Bail if messaging API has gone away
     if (!chrome.runtime?.sendMessage) return;
 
     try {
